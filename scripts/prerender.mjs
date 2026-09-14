@@ -107,4 +107,15 @@ ${routes
 fs.writeFileSync(path.join(DIST, "sitemap.xml"), sitemap);
 console.log(`${path.join(DIST, "sitemap.xml")}`);
 
+// robots.txt likaså — den pekar ut sitemapen och får inte hamna på fel domän.
+fs.writeFileSync(
+  path.join(DIST, "robots.txt"),
+  `User-agent: *
+Allow: /
+
+Sitemap: ${origin}/sitemap.xml
+`
+);
+console.log(`${path.join(DIST, "robots.txt")}`);
+
 fs.rmSync("dist-ssr", { recursive: true, force: true });

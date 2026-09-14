@@ -23,20 +23,14 @@ Allt som gick att göra utan ditt material är redan gjort — se
       signalerar "inte ett riktigt företag" till precis den besökare du vill
       övertyga.
 
-- [ ] **Bestäm domän och e-post — nu när namnet är "Studio Leika".**
-      Koden står fortfarande på `leikastudio.se` (`site.url` i
-      `src/data/site.ts`) och `hej@leikastudio.se` (`contact.email` i
-      `src/data/content.ts`). Det är en glipa: varumärket säger en sak,
-      adressen en annan, och den kostar dig varje gång någon ska skriva in
-      URL:en ur minnet eller hör den sägas högt.
+- [ ] **Registrera `studioleika.se`.** Koden står redan på den — canonical,
+      og:url, sitemap.xml, robots.txt och strukturerad data pekar dit. Men
+      domänen är inte köpt än, så inget av det fungerar förrän den är det.
+      Överväg att ta `leikastudio.se` också och 301-peka den mot den riktiga,
+      så fångar du den vanligaste felstavningen.
 
-      Rekommendation: säkra `studioleika.se` och gör den till den riktiga
-      adressen. Äger du redan `leikastudio.se` — behåll den och peka den med
-      301-omdirigering mot den nya, så fångar du felstavningarna.
-
-      `site.url` byggs in i canonical, og:url, sitemap.xml och robots.txt.
-      Ändra den på ett ställe så följer resten med. Säg till vilken domän det
-      blir så sätter jag den, inklusive robots.txt.
+      Ändrar du dig om namnet: `site.url` i `src/data/site.ts` är enda
+      stället, resten följer med vid nästa bygge.
 
 - [ ] **Läs igenom integritetspolicyn.** `src/pages/PrivacyPolicy.tsx`.
       Jag har skrivit ett fullständigt utkast som beskriver sajten som den
@@ -98,10 +92,10 @@ visade arbeten är svår att köpa av, hur bra sajten än är i övrigt.
 
 ## 3. Drift och mätning
 
-- [ ] **Sätt upp e-postadressen** på den domän du landar i ovan.
-      `contact.email` ligger publikt i sidfoten, kontaktsektionen, formulärets
-      mejl-fallback och den strukturerade datan, så den måste faktiskt gå att
-      nå innan lansering.
+- [ ] **Sätt upp `hej@studioleika.se`.** Adressen ligger publikt i sidfoten,
+      kontaktsektionen, formulärets mejl-fallback och den strukturerade datan.
+      Den måste faktiskt gå att nå innan lansering — utan den tappar du varje
+      förfrågan som går via mejl-fallbacken.
 
 - [ ] **Analysverktyg.** Utan mätning går det inte att se om någon hittar
       sajten. Välj **Plausible** eller **Umami** framför Google Analytics —
@@ -186,6 +180,8 @@ Gjort i den här omgången, så vi vet var vi står.
 - CTA-bandets brödtext: 4,39:1 → 4,81:1, över WCAG AA
 - Integritetspolicy som egen, förrenderad sida
 - Versionshanteringen är igång (`git init` + utgångsläget incheckat)
+- `robots.txt` genereras vid bygget ur `site.url`, som sitemapen — den kan
+  inte längre peka på fel domän
 - Namnbytet till "Studio Leika" är genomfört i hela kodbasen. Namnet
   definieras numera bara i `site.name` — sidhuvud, sidfot, hero, titlar,
   strukturerad data, manifest och OG-bilden hämtar det därifrån. Logotypen

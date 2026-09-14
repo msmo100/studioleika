@@ -4,7 +4,7 @@
  * canonical, og:url och sitemap.xml vid bygget.
  */
 export const site = {
-  url: "https://leikastudio.se",
+  url: "https://studioleika.se",
   name: "Studio Leika",
   title: "Studio Leika — Hemsidor, e-handel & SEO för företag",
   description:

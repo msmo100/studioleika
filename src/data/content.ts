@@ -165,7 +165,7 @@ export const priceTiers: PriceTier[] = [
  * Nollställda värden är medvetna platshållare, se README.
  */
 export const contact = {
-  email: "hej@leikastudio.se",
+  email: "hej@studioleika.se",
   phone: { display: "+46 00 000 00 00", href: "tel:+46000000000" },
   location: "Sverige — jobbar digitalt med kunder i hela landet",
   /** Organisationsnummer. Platshållare av nollor tills det riktiga finns. */
