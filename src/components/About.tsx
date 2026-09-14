@@ -4,7 +4,7 @@ import { values } from "../data/content";
 
 export default function About() {
   return (
-    <section className="section" id="om-oss">
+    <section className="section section-alt" id="om-oss">
       <div className="wrap">
         <Reveal className="section-head">
           <p className="eyebrow">Om oss</p>

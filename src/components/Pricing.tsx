@@ -3,7 +3,7 @@ import { priceTiers } from "../data/content";
 
 export default function Pricing() {
   return (
-    <section className="section" id="priser">
+    <section className="section section-alt" id="priser">
       <div className="wrap">
         <Reveal className="section-head">
           <p className="eyebrow">Priser</p>
@@ -38,6 +38,16 @@ export default function Pricing() {
                   <li key={item}>{item}</li>
                 ))}
               </ul>
+
+              {/* Utan knapp här måste den som bestämt sig scrolla vidare och
+                  själv leta upp formuläret. */}
+              <a
+                href="#kontakt"
+                className={`btn btn-block price-cta${tier.featured ? " btn-primary" : " btn-ghost"}`}
+              >
+                {tier.cta}
+                <span className="sr-only"> — {tier.name}</span>
+              </a>
             </Reveal>
           ))}
         </div>

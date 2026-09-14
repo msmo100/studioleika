@@ -113,6 +113,8 @@ export interface PriceTier {
   items: string[];
   /** Lyfts fram visuellt i prisrutnätet */
   featured?: boolean;
+  /** Texten på kortets knapp */
+  cta: string;
 }
 
 export const priceTiers: PriceTier[] = [
@@ -127,6 +129,7 @@ export const priceTiers: PriceTier[] = [
       "Grundläggande sökmotoroptimering",
       "Publicering och driftsättning",
     ],
+    cta: "Boka ett samtal",
   },
   {
     name: "Företag",
@@ -140,6 +143,7 @@ export const priceTiers: PriceTier[] = [
       "Genomgång så ni kan uppdatera själva",
     ],
     featured: true,
+    cta: "Boka ett samtal",
   },
   {
     name: "E-handel",
@@ -152,6 +156,7 @@ export const priceTiers: PriceTier[] = [
       "Enkel administration av sortimentet",
       "Prisförslag efter ett första samtal",
     ],
+    cta: "Begär offert",
   },
 ];
 
@@ -165,14 +170,80 @@ export const contact = {
   location: "Sverige — jobbar digitalt med kunder i hela landet",
   /** Organisationsnummer. Platshållare av nollor tills det riktiga finns. */
   orgNr: "000000-0000",
-  /** Integritetspolicy. Tom sträng döljer länken — sätt den när sidan finns. */
-  privacyHref: "",
+  /** Integritetspolicyn ligger på en egen, förrenderad sida. */
+  privacyHref: "/integritetspolicy",
 };
+
+/**
+ * Sant för värden som fortfarande är platshållare av nollor.
+ * Telefonnummer och org.nr döljs hellre än visas som "000000-0000" —
+ * nollor i sidfoten signalerar "inte ett riktigt företag" till besökaren.
+ */
+export function isPlaceholder(value: string): boolean {
+  return !value.trim() || !/[1-9]/.test(value);
+}
+
+/**
+ * Dit kontaktformuläret postar. Tom sträng = ingen backend kopplad ännu;
+ * formuläret faller då tillbaka på ett förifyllt mejl, så att knappen aldrig
+ * står och låtsas. Se THINGSTODO.md.
+ */
+export const formEndpoint = "";
 
 export const navLinks = [
   { href: "#tjanster", label: "Tjänster" },
   { href: "#priser", label: "Priser" },
   { href: "#process", label: "Så jobbar vi" },
   { href: "#om-oss", label: "Om oss" },
+  { href: "#fragor", label: "Frågor" },
   { href: "#kontakt", label: "Kontakt" },
+];
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+/**
+ * Vanliga frågor. Dubbel nytta: de fångar långsvansade sökningar
+ * ("vad kostar en hemsida") och matas ut som FAQPage-schema i index.html.
+ * Svaren speglar det som redan står i pris- och processavsnitten —
+ * ändras villkoren där måste de ändras här också.
+ */
+export const faq: FaqItem[] = [
+  {
+    question: "Vad kostar en hemsida?",
+    answer:
+      "En enklare sajt börjar på 4 999 kr och en flersidig företagssajt på 9 999 kr, exklusive moms. E-handel prissätts efter omfattning. Ni får ett fast pris innan vi börjar — tillkommer önskemål under resans gång räknar vi på dem i förväg, aldrig i efterhand.",
+  },
+  {
+    question: "Hur lång tid tar ett projekt?",
+    answer:
+      "Det beror på omfattning och hur snabbt vi får material och återkoppling från er. Ni får en tidsplan med hållpunkter redan efter det första samtalet, så ni vet vad som gäller innan ni bestämmer er.",
+  },
+  {
+    question: "Äger vi sajten efteråt?",
+    answer:
+      "Ja. Ni äger design, innehåll och kod när projektet är betalt, och ni är aldrig inlåsta hos oss. Vill ni byta leverantör senare följer allt med.",
+  },
+  {
+    question: "Kan vi uppdatera innehållet själva?",
+    answer:
+      "Ja. I Företagspaketet ingår en genomgång där vi visar hur ni ändrar texter och bilder på egen hand. Vill ni hellre att vi sköter det löpande går det också bra.",
+  },
+  {
+    question: "Hjälper ni till med texter och bilder?",
+    answer:
+      "Vi hjälper gärna till att strukturera och putsa era texter, och säger till när en sida skulle tjäna på riktiga bilder i stället för lagerfoton. Har ni varken text eller bild klart tar vi det som en punkt i planeringen innan vi börjar bygga.",
+  },
+  {
+    question: "Måste vi finnas i närheten för att jobba med er?",
+    answer:
+      "Nej. Vi jobbar digitalt med kunder i hela Sverige — möten sker över video och allt material delas online. Fungerar lika bra oavsett var ni sitter.",
+  },
+  {
+    question: "Vad händer efter lansering?",
+    answer:
+      "Vi försvinner inte. Uppdateringar, säkerhet och support finns kvar som en löpande tjänst, och vi hör av oss efter lanseringen för att se hur sajten faktiskt fungerar för er.",
+  },
 ];

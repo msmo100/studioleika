@@ -4,7 +4,7 @@ import { services } from "../data/content";
 
 export default function Services() {
   return (
-    <section className="section section-alt" id="tjanster">
+    <section className="section" id="tjanster">
       <div className="wrap">
         <Reveal className="section-head">
           <p className="eyebrow">Tjänster</p>

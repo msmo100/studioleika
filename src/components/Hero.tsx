@@ -1,4 +1,3 @@
-import Reveal from "./Reveal";
 import Logo from "./Logo";
 
 export default function Hero() {
@@ -7,20 +6,27 @@ export default function Hero() {
       <div className="hero-vignette" aria-hidden="true"></div>
 
       <div className="wrap hero-inner">
-        <Reveal className="hero-copy">
-          <h1 className="hero-title">
-            <Logo />
-            <span className="hero-title-sub">Leika Studio</span>
+        {/* Medvetet utan Reveal: hero är sidans LCP-element och ska målas
+            direkt, inte tonas in när en observer hunnit trigga. */}
+        <div className="hero-copy">
+          <Logo className="hero-logo" />
+
+          <p className="hero-brand">
+            Leika Studio
             <span className="sr-only"> — uttalas ungefär LEJ-ka</span>
-          </h1>
+          </p>
 
           <span className="ornament" aria-hidden="true">
             ✦
           </span>
 
+          <h1 className="hero-title">
+            Hemsidor och webblösningar för företag som vill synas
+          </h1>
+
           <p className="hero-sub">
-            Vi bygger hemsidor och webblösningar för företag som vill synas, kännas rätt och
-            faktiskt fungera. Tydligt hantverk, personlig kontakt — inga krångliga byråord.
+            Vi bygger sajter som känns rätt och faktiskt fungerar — tydligt hantverk, personlig
+            kontakt och inga krångliga byråord.
           </p>
 
           <div className="hero-cta">
@@ -33,7 +39,7 @@ export default function Hero() {
           </div>
 
           <p className="hero-note">Nystartad studio i Sverige — vi tar just nu emot nya projekt.</p>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

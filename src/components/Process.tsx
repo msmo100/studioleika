@@ -3,9 +3,9 @@ import { processSteps } from "../data/content";
 
 export default function Process() {
   return (
-    <section className="section section-alt" id="process">
+    <section className="section" id="process">
       <div className="wrap">
-        <Reveal className="section-head">
+        <Reveal className="section-head section-head-left">
           <p className="eyebrow">Så jobbar vi</p>
           <h2>Fyra steg, ingen mystik</h2>
         </Reveal>
