@@ -10,7 +10,7 @@ export default function About() {
           <p className="eyebrow">Om oss</p>
           <h2>En studio som pratar människa, inte techsnack</h2>
           <p className="section-lead">
-            Leika Studio är en liten, personlig webbstudio. Namnet kommer från fornnordiskans{" "}
+            Studio Leika är en liten, personlig webbstudio. Namnet kommer från fornnordiskans{" "}
             <em>leika</em> — att röra sig fritt och obehindrat. Det är så ett webbprojekt borde
             kännas: strukturerat och genomarbetat under ytan, smidigt och friktionsfritt för er.
             Ni ska förstå vad som händer i varje steg, utan att behöva kunna koda en enda rad.

@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="wrap footer-inner">
         <div className="footer-brand">
           <Logo className="logo-sm" />
-          <span className="brand-name">Leika Studio</span>
+          <span className="brand-name">Studio Leika</span>
         </div>
         <ul className="footer-meta">
           <li>
@@ -24,7 +24,7 @@ export default function Footer() {
             </a>
           </li>
         </ul>
-        <p className="footer-copy">© {year} Leika Studio. Alla rättigheter förbehållna.</p>
+        <p className="footer-copy">© {year} Studio Leika. Alla rättigheter förbehållna.</p>
       </div>
     </footer>
   );

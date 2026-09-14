@@ -71,7 +71,7 @@ export default function Header() {
   return (
     <header ref={headerRef} className={`site-header${scrolled ? " scrolled" : ""}`}>
       <div className="wrap header-inner">
-        <a href="#top" className="brand" aria-label="Leika Studio — startsida">
+        <a href="#top" className="brand" aria-label="Studio Leika — startsida">
           <Logo className="logo-sm" />
         </a>
 

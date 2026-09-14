@@ -1,5 +1,5 @@
 /**
- * Genererar Leika Studios grafiska tillgångar ur de självhostade fonterna.
+ * Genererar Studio Leikas grafiska tillgångar ur de självhostade fonterna.
  * Körs med `npm run brand`. Utdata:
  *
  *   src/brand/logoPaths.ts    logotypen som SVG-paths
@@ -15,6 +15,7 @@
 import fs from "node:fs";
 import * as fontkit from "fontkit";
 import sharp from "sharp";
+import { site } from "../src/data/site.ts";
 
 const DISPLAY = fontkit.openSync(
   "node_modules/@fontsource/playfair-display/files/playfair-display-latin-500-normal.woff2"
@@ -147,7 +148,7 @@ function buildOg() {
   const tx = logoX;
   const ty = logoY + 800 * s; // baslinjen ligger på y=0 i logo-koordinater
 
-  const name = textPath(SANS, "LEIKA STUDIO", {
+  const name = textPath(SANS, site.name.toUpperCase(), {
     size: 23,
     x: OG_W / 2,
     y: logoY + logoH + 78,

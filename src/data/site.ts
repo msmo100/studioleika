@@ -5,12 +5,13 @@
  */
 export const site = {
   url: "https://leikastudio.se",
-  name: "Leika Studio",
-  title: "Leika Studio — Hemsidor, e-handel & SEO för företag",
+  name: "Studio Leika",
+  title: "Studio Leika — Hemsidor, e-handel & SEO för företag",
   description:
-    "Leika Studio bygger skräddarsydda hemsidor, e-handel och webblösningar för företag i hela Sverige. Fast pris från 4 999 kr, tydlig process och support efter lansering.",
+    "Studio Leika bygger skräddarsydda hemsidor, e-handel och webblösningar för företag i hela Sverige. Fast pris från 4 999 kr, tydlig process och support efter lansering.",
   locale: "sv_SE",
   ogImage: "/og.png",
+  ogImageAlt: "Studio Leika — hemsidor, e-handel och webblösningar för företag",
 } as const;
 
 /** Sidor som förrenderas till egna HTML-filer och listas i sitemap.xml. */

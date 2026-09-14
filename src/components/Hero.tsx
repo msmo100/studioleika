@@ -12,7 +12,7 @@ export default function Hero() {
           <Logo className="hero-logo" />
 
           <p className="hero-brand">
-            Leika Studio
+            Studio Leika
             <span className="sr-only"> — uttalas ungefär LEJ-ka</span>
           </p>
 

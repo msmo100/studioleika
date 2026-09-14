@@ -12,6 +12,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+import { site } from "../src/data/site.ts";
 
 const DIST = "dist";
 const SSR = "dist-ssr/entry-server.js";
@@ -23,14 +24,14 @@ const esc = (value) =>
   String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 /** Bygger <head>-blocket för en sida. */
-function seoBlock(meta, ogImage, siteName) {
+function seoBlock(meta, ogImage) {
   const shortDescription = meta.description.split(". ")[0] + ".";
   return `<title>${esc(meta.title)}</title>
     <meta name="description" content="${esc(meta.description)}" />
     <link rel="canonical" href="${esc(meta.canonical)}" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="${esc(siteName)}" />
+    <meta property="og:site_name" content="${esc(site.name)}" />
     <meta property="og:locale" content="sv_SE" />
     <meta property="og:title" content="${esc(meta.title)}" />
     <meta property="og:description" content="${esc(meta.description)}" />
@@ -38,7 +39,7 @@ function seoBlock(meta, ogImage, siteName) {
     <meta property="og:image" content="${esc(ogImage)}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Leika Studio — hemsidor, e-handel och webblösningar för företag" />
+    <meta property="og:image:alt" content="${esc(site.ogImageAlt)}" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${esc(meta.title)}" />
@@ -71,7 +72,7 @@ for (const route of routes) {
   const body = render(route.path);
 
   let html = template;
-  html = replaceBlock(html, "seo", seoBlock(meta, ogImage, "Leika Studio"));
+  html = replaceBlock(html, "seo", seoBlock(meta, ogImage));
   html = replaceBlock(
     html,
     "jsonld",
