@@ -5,7 +5,7 @@ export default function Process() {
   return (
     <section className="section" id="process">
       <div className="wrap">
-        <Reveal className="section-head section-head-left">
+        <Reveal className="section-head">
           <p className="eyebrow">Så jobbar vi</p>
           <h2>Fyra steg, ingen mystik</h2>
         </Reveal>

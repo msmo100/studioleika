@@ -370,12 +370,6 @@ button { font: inherit; cursor: pointer; }
   margin: 30px auto 0;
   background: var(--line-strong);
 }
-.section-head-left {
-  margin-left: 0;
-  text-align: left;
-}
-.section-head-left::after { margin-left: 0; }
-
 .eyebrow {
   display: inline-flex;
   align-items: center;
