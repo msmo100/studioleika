@@ -945,8 +945,10 @@ button { font: inherit; cursor: pointer; }
   .header-actions .btn-sm { display: none; }
   .value-cards, .service-grid, .price-grid, .process-list { grid-template-columns: 1fr; }
   .price-card { padding: 42px 24px 36px; }
-  .value-card, .service-card { border-right: none; }
-  .value-card { border-bottom: 1px solid var(--line); }
+  /* Bara värdekorten. Deras behållare har ram runt om och kan ta över
+     högerkanten — .service-grid har bara border-top och border-left, så
+     där ÄR kortens border-right ytterkanten. */
+  .value-card { border-right: none; border-bottom: 1px solid var(--line); }
   .value-card:last-child { border-bottom: none; }
   .section { padding: 78px 0; }
   .hero-logo { width: min(100%, 240px); }
