@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Miljovariabler — RESEND_API_KEY m.fl. hor hemma i Vercel, inte i repot
+.env
+.env.*
+!.env.example
+
+# Vercel
+.vercel
