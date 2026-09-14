@@ -23,8 +23,9 @@ const app = (
 );
 
 // Sidorna förrenderas vid bygget, så det finns markup att hydrera.
-// I dev-servern är roten tom och vi monterar som vanligt.
-if (container.hasChildNodes()) {
+// Räknar element, inte noder: i dev innehåller roten platshållarkommentaren
+// <!--app-->, och den skulle få hasChildNodes() att ljuga.
+if (container.childElementCount > 0) {
   hydrateRoot(container, app);
 } else {
   createRoot(container).render(app);
