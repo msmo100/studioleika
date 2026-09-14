@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { contact, formEndpoint, isPlaceholder } from "../data/content";
 import Reveal from "./Reveal";
 
@@ -11,6 +11,14 @@ export default function Contact() {
   const [status, setStatus] = useState<Status>(null);
   const [errors, setErrors] = useState<Errors>({});
   const [sending, setSending] = useState(false);
+
+  // Hur länge formuläret varit synligt. Robotar postar direkt mot endpointen;
+  // en människa behöver några sekunder. Sätts i en effekt och inte under
+  // rendering, så det förrenderade och det hydrerade värdet aldrig krockar.
+  const visasSedan = useRef(0);
+  useEffect(() => {
+    visasSedan.current = Date.now();
+  }, []);
 
   function validate(data: FormData): Errors {
     const found: Errors = {};
@@ -79,6 +87,7 @@ export default function Contact() {
 
     setSending(true);
     setStatus(null);
+    data.set("elapsed", String(visasSedan.current ? Date.now() - visasSedan.current : 0));
     try {
       const response = await fetch(formEndpoint, {
         method: "POST",

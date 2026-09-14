@@ -184,11 +184,11 @@ export function isPlaceholder(value: string): boolean {
 }
 
 /**
- * Dit kontaktformuläret postar. Tom sträng = ingen backend kopplad ännu;
- * formuläret faller då tillbaka på ett förifyllt mejl, så att knappen aldrig
- * står och låtsas. Se THINGSTODO.md.
+ * Dit kontaktformuläret postar — vår egen Vercel-funktion i `api/kontakt.ts`.
+ * Töms strängen faller formuläret tillbaka på ett förifyllt mejl, så att
+ * knappen aldrig står och låtsas.
  */
-export const formEndpoint = "";
+export const formEndpoint = "/api/kontakt";
 
 export const navLinks = [
   { href: "#tjanster", label: "Tjänster" },

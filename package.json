@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
     "brand": "node scripts/build-brand.mjs",
     "lint": "oxlint",
+    "test:kontakt": "node scripts/test-kontakt.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

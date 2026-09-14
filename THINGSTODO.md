@@ -8,11 +8,29 @@ Allt som gick att göra utan ditt material är redan gjort — se
 
 ## 1. Blockerare — måste vara klart innan sajten går live
 
-- [ ] **Koppla kontaktformuläret.**
-      Sätt `formEndpoint` i `src/data/content.ts` till din endpoint —
-      Formspree, Resend, Netlify Forms eller en egen API-route fungerar alla.
-      Tills dess faller formuläret tillbaka på ett förifyllt mejl, så knappen
-      gör åtminstone något, men det är ingen långsiktig lösning.
+- [ ] **Konfigurera kontaktformuläret.** Koden är klar — `api/kontakt.ts`
+      tar emot formuläret och skickar det som mejl via Resend. Kvar är tre
+      inställningar:
+
+  1. Skapa konto på [resend.com](https://resend.com) och verifiera
+     `studioleika.se` (kräver att domänen är registrerad, se punkten ovan).
+  2. Skapa en API-nyckel.
+  3. Lägg in tre miljövariabler i Vercel → Settings → Environment Variables:
+
+     | Variabel | Värde |
+     | --- | --- |
+     | `RESEND_API_KEY` | nyckeln från steg 2 |
+     | `CONTACT_TO` | `hej@studioleika.se` |
+     | `CONTACT_FROM` | `Studio Leika <formular@studioleika.se>` |
+
+      `CONTACT_FROM` måste ligga på den verifierade domänen — Resend vägrar
+      annars. `CONTACT_TO` kan vara vad som helst, även en privat adress
+      under tiden.
+
+      Innan variablerna är satta svarar funktionen 500 och besökaren får
+      mejladressen i klartext i stället. Inga förfrågningar tappas tyst.
+      Kör `npm run test:kontakt` för att kontrollera logiken utan att skicka
+      något.
 
 - [ ] **Telefonnummer.** `contact.phone` i `src/data/content.ts`.
       Raden är dold så länge numret består av nollor — fyll i det riktiga så
@@ -113,10 +131,19 @@ visade arbeten är svår att köpa av, hur bra sajten än är i övrigt.
       lokala sökningar ("webbyrå" + ort). Kräver att du bestämmer dig för
       vilken ort du vill synas på — idag står det bara "Sverige".
 
-- [ ] **Hosting.** Sajten byggs till statiska filer och varje sida blir en
-      egen HTML-fil (`dist/integritetspolicy/index.html`), så den fungerar på
-      vilket statiskt webbhotell som helst — Netlify, Vercel, Cloudflare Pages
-      eller vanlig filuppladdning. Ingen SPA-fallback behövs.
+- [ ] **Koppla repot till Vercel.** `vercel.json` är på plats med
+      byggkommando, utdatakatalog, säkerhetsheaders och cachning. Vercel
+      hittar resten själv. Sajten byggs till statiska filer och varje sida blir
+      en egen HTML-fil, så ingen SPA-fallback behövs.
+
+- [ ] **Frivilligt: hårdare spamskydd.** Honeypot och tidskontroll stoppar
+      det mesta. Blir det ändå problem är Cloudflare Turnstile nästa steg —
+      cookiefritt, så policyn påverkas inte.
+
+- [ ] **Frivilligt: Content-Security-Policy.** Sajten laddar allt från sin
+      egen domän, så en snäv CSP vore enkel att sätta i `vercel.json`. Jag
+      har låtit bli eftersom jag inte kan testa den i en webbläsare härifrån,
+      och en trasig CSP går sönder tyst.
 
 ---
 
@@ -151,6 +178,9 @@ Gjort i den här omgången, så vi vet var vi står.
 - Knapp i varje prisruta — tidigare fanns ingen alls
 - "Boka möte" finns nu i mobilmenyn; den var helt dold under 720 px
 - FAQ-sektion med sju frågor
+- Formulärets endpoint (`api/kontakt.ts`) som Vercel-funktion: validering,
+  fältvisa fel, honeypot, avvisning av inlägg som postats för snabbt, tak per
+  fält och `reply_to` satt till avsändaren. Täckt av `npm run test:kontakt`
 
 **SEO**
 
@@ -180,6 +210,8 @@ Gjort i den här omgången, så vi vet var vi står.
 - CTA-bandets brödtext: 4,39:1 → 4,81:1, över WCAG AA
 - Integritetspolicy som egen, förrenderad sida
 - Versionshanteringen är igång (`git init` + utgångsläget incheckat)
+- `vercel.json` med säkerhetsheaders, `cleanUrls` och cachning av de
+  hashade filerna
 - `robots.txt` genereras vid bygget ur `site.url`, som sitemapen — den kan
   inte längre peka på fel domän
 - Namnbytet till "Studio Leika" är genomfört i hela kodbasen. Namnet
