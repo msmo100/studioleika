@@ -13,7 +13,7 @@ export default function Hero() {
 
           <p className="hero-brand">
             Studio Leika
-            <span className="sr-only"> — uttalas ungefär LEJ-ka</span>
+            <span className="sr-only">, uttalas ungefär LEJ-ka</span>
           </p>
 
           <span className="ornament" aria-hidden="true">
@@ -25,8 +25,8 @@ export default function Hero() {
           </h1>
 
           <p className="hero-sub">
-            Vi bygger sajter som känns rätt och faktiskt fungerar — tydligt hantverk, personlig
-            kontakt och inga krångliga byråord.
+            Vi bygger hemsidor som är lätta att använda och som hjälper er att få fler kunder.
+            Ni har en personlig kontakt hela vägen och får raka besked på vanlig svenska.
           </p>
 
           <div className="hero-cta">
@@ -38,7 +38,7 @@ export default function Hero() {
             </a>
           </div>
 
-          <p className="hero-note">Nystartad studio i Sverige — vi tar just nu emot nya projekt.</p>
+          <p className="hero-note">Nystartad studio i Sverige. Vi tar just nu emot nya projekt.</p>
         </div>
       </div>
     </section>

@@ -43,7 +43,7 @@ export default function Contact() {
     const rader = [
       `Namn: ${data.get("namn")}`,
       `E-post: ${data.get("epost")}`,
-      `Företag: ${data.get("foretag") || "—"}`,
+      `Företag: ${data.get("foretag") || "-"}`,
       "",
       String(data.get("meddelande") ?? ""),
     ].join("\n");
@@ -55,7 +55,7 @@ export default function Contact() {
 
     window.location.href = href;
     setStatus({
-      text: `Vi öppnar ditt e-postprogram med meddelandet ifyllt. Går det inte — mejla oss direkt på ${contact.email}.`,
+      text: `Vi öppnar ditt e-postprogram med meddelandet ifyllt. Fungerar det inte kan du mejla oss direkt på ${contact.email}.`,
       tone: "ok",
     });
   }
@@ -75,7 +75,7 @@ export default function Contact() {
     const found = validate(data);
     setErrors(found);
     if (Object.keys(found).length > 0) {
-      setStatus({ text: "Något saknas — se de markerade fälten.", tone: "error" });
+      setStatus({ text: "Något saknas. Se de markerade fälten.", tone: "error" });
       form.querySelector<HTMLElement>("[aria-invalid='true']")?.focus();
       return;
     }
@@ -124,8 +124,8 @@ export default function Contact() {
           <p className="eyebrow">Kontakt</p>
           <h2>Nyfiken? Hör av dig</h2>
           <p className="section-lead">
-            Berätta kort om projektet så återkommer vi inom ett par dagar. Inget krav, inget
-            krångel.
+            Berätta kort om projektet så återkommer vi inom ett par dagar. Det kostar ingenting
+            och ni binder er inte till något.
           </p>
 
           <ul className="kontakt-list">

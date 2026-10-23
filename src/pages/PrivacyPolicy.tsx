@@ -18,7 +18,7 @@ export default function PrivacyPolicy() {
     <>
       <header className="site-header scrolled">
         <div className="wrap header-inner">
-          <a href="/" className="brand" aria-label={`${site.name} — startsida`}>
+          <a href="/" className="brand" aria-label={`${site.name}, startsida`}>
             <Logo className="logo-sm" />
           </a>
           <a href="/" className="btn btn-ghost btn-sm">

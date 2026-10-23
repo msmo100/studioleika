@@ -14,7 +14,7 @@ export default function Faq() {
           <p className="eyebrow">Vanliga frågor</p>
           <h2>Det ni brukar undra över</h2>
           <p className="section-lead">
-            Hittar ni inte svaret här är det bara att fråga — vi svarar hellre en gång för mycket.
+            Hittar ni inte svaret här är det bara att fråga. Vi svarar gärna.
           </p>
         </Reveal>
 

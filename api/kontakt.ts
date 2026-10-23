@@ -82,7 +82,7 @@ export async function POST(request: Request): Promise<Response> {
   const brödtext = [
     `Namn:     ${namn}`,
     `E-post:   ${epost}`,
-    `Företag:  ${foretag || "—"}`,
+    `Företag:  ${foretag || "-"}`,
     "",
     meddelande,
   ].join("\n");

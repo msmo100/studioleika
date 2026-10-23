@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { renderToString } from "react-dom/server";
 import App from "./App";
 import { site, routes } from "./data/site";
-import { faq, services, priceTiers, contact } from "./data/content";
+import { faq, services, contact } from "./data/content";
 
 export { routes };
 
@@ -32,7 +32,6 @@ function homeJsonLd(): object[] {
       logo: `${site.url}/icon-512.png`,
       description: site.description,
       email: contact.email,
-      priceRange: "4999 SEK–",
       areaServed: { "@type": "Country", name: "Sverige" },
       address: { "@type": "PostalAddress", addressCountry: "SE" },
       knowsLanguage: ["sv-SE"],
@@ -48,20 +47,6 @@ function homeJsonLd(): object[] {
           },
         })),
       },
-      makesOffer: priceTiers
-        // "Offert" är inget belopp — den nivån får ingen price-egenskap.
-        .filter((tier) => /\d/.test(tier.price))
-        .map((tier) => ({
-          "@type": "Offer",
-          name: tier.name,
-          description: tier.text,
-          price: tier.price.replace(/[^\d]/g, ""),
-          priceCurrency: "SEK",
-          priceSpecification: {
-            "@type": "PriceSpecification",
-            valueAddedTaxIncluded: false,
-          },
-        })),
     },
     {
       "@context": "https://schema.org",
@@ -99,7 +84,7 @@ export interface Head {
 export function head(path: string): Head {
   if (path === "/integritetspolicy") {
     return {
-      title: `Integritetspolicy — ${site.name}`,
+      title: `Integritetspolicy | ${site.name}`,
       description: POLICY_DESCRIPTION,
       canonical: `${site.url}/integritetspolicy`,
       jsonLd: policyJsonLd(),

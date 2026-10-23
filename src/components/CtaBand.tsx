@@ -6,8 +6,8 @@ export default function CtaBand() {
       <Reveal className="wrap cta-band-inner">
         <h2>Redo att synas online?</h2>
         <p>
-          Vi tar just nu emot ett fåtal nya projekt — hör av dig så tar vi ett första,
-          förutsättningslöst samtal.
+          Vi tar just nu emot ett fåtal nya projekt. Hör av dig så tar vi ett första samtal,
+          helt utan förpliktelser.
         </p>
         <a href="#kontakt" className="btn btn-light">
           Kom igång

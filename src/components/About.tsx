@@ -8,12 +8,11 @@ export default function About() {
       <div className="wrap">
         <Reveal className="section-head">
           <p className="eyebrow">Om oss</p>
-          <h2>En studio som pratar människa, inte techsnack</h2>
+          <h2>Vi förklarar på vanlig svenska</h2>
           <p className="section-lead">
-            Studio Leika är en liten, personlig webbstudio. Namnet kommer från fornnordiskans{" "}
-            <em>leika</em> — att röra sig fritt och obehindrat. Det är så ett webbprojekt borde
-            kännas: strukturerat och genomarbetat under ytan, smidigt och friktionsfritt för er.
-            Ni ska förstå vad som händer i varje steg, utan att behöva kunna koda en enda rad.
+            Studio Leika är en liten webbstudio, och ni pratar direkt med oss som bygger er sida.
+            Vi lägger ner mycket arbete på det som inte syns, så att det blir enkelt för er. Ni
+            ska alltid veta var projektet står, och ni behöver inte kunna något om kod.
           </p>
         </Reveal>
 

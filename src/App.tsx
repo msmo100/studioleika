@@ -1,7 +1,7 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
-import Pricing from "./components/Pricing";
+import Offer from "./components/Offer";
 import Process from "./components/Process";
 import About from "./components/About";
 import Faq from "./components/Faq";
@@ -42,12 +42,12 @@ export default function App({ path = "/" }: AppProps) {
 
       <Header />
 
-      {/* Ordningen följer menyn: vad vi gör och vad det kostar först,
+      {/* Ordningen följer menyn: vad vi gör och hur man får en offert först,
           om oss och frågor när besökaren redan är intresserad. */}
       <main id="main">
         <Hero />
         <Services />
-        <Pricing />
+        <Offer />
         <Process />
         <About />
         <Faq />

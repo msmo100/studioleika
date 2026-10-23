@@ -10,7 +10,7 @@ export default function Services() {
           <p className="eyebrow">Tjänster</p>
           <h2>Vad vi hjälper er med</h2>
           <p className="section-lead">
-            Från första skiss till lanserad sajt — och gärna långsiktigt samarbete därefter.
+            Från första skiss till färdig sida, och gärna ett längre samarbete efter det.
           </p>
         </Reveal>
 

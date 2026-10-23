@@ -7,7 +7,7 @@ export default function Process() {
       <div className="wrap">
         <Reveal className="section-head">
           <p className="eyebrow">Så jobbar vi</p>
-          <h2>Fyra steg, ingen mystik</h2>
+          <h2>Så går ett projekt till</h2>
         </Reveal>
 
         <ol className="process-list">

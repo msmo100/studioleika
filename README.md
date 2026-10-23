@@ -18,10 +18,10 @@ npm run brand    # bygger om logotyp-paths, OG-bild och ikoner
 
 - `src/App.tsx` — sätter ihop sidan, och väljer mellan startsida och
   integritetspolicy utifrån sökvägen
-- `src/components/` — Header, Hero, Services, Pricing, Process, About, Faq,
+- `src/components/` — Header, Hero, Services, Offer, Process, About, Faq,
   CtaBand, Contact, Footer, samt `Logo`, `Icon` och `Reveal`
 - `src/pages/PrivacyPolicy.tsx` — integritetspolicyn, egen URL
-- `src/data/content.ts` — allt textinnehåll (tjänster, priser, FAQ,
+- `src/data/content.ts` — allt textinnehåll (tjänster, erbjudande, FAQ,
   kontaktuppgifter) samlat på ett ställe
 - `src/data/site.ts` — domän, titel, beskrivning och listan över rutter
 - `src/entry-server.tsx` — rendering och head-taggar för förrenderingen,
