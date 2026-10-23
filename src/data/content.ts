@@ -85,29 +85,24 @@ export const services: Service[] = [
 ];
 
 export interface ProcessStep {
-  num: string;
   title: string;
   text: string;
 }
 
 export const processSteps: ProcessStep[] = [
   {
-    num: "I",
     title: "Upptäck",
     text: "Vi börjar med att lära känna er verksamhet, vad ni vill uppnå och vilka era kunder är.",
   },
   {
-    num: "II",
     title: "Designa",
     text: "Ni får se utkast tidigt och tycka till, så att designen tar form tillsammans med er.",
   },
   {
-    num: "III",
     title: "Bygg",
     text: "Vi bygger sidan och testar den på mobil, surfplatta och dator innan något publiceras.",
   },
   {
-    num: "IV",
     title: "Lansera & väx",
     text: "Hemsidan går live. Sedan följer vi upp hur den fungerar och hjälper till när ni vill ändra eller lägga till något.",
   },

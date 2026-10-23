@@ -12,8 +12,8 @@ export default function Process() {
 
         <ol className="process-list">
           {processSteps.map((step) => (
-            <Reveal as="li" className="process-step" key={step.num}>
-              <span className="process-num">{step.num}</span>
+            <Reveal as="li" className="process-step" key={step.title}>
+              <span className="process-mark" aria-hidden="true"></span>
               <h3>{step.title}</h3>
               <p>{step.text}</p>
             </Reveal>

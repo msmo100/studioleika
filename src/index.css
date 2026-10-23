@@ -511,26 +511,35 @@ button { font: inherit; cursor: pointer; }
   line-height: 2.5;
   color: var(--accent);
 }
-.offer-steps {
-  counter-reset: offer-step;
-  margin-bottom: 32px;
-}
+/* Samma ringar och linje som i processavsnittet, fast lodrätt */
+.offer-steps { margin-bottom: 32px; }
 .offer-steps li {
-  counter-increment: offer-step;
   position: relative;
-  padding-left: 34px;
-  margin-bottom: 16px;
+  padding: 0 0 18px 34px;
   font-size: 0.94rem;
   color: var(--ink-soft);
 }
-.offer-steps li:last-child { margin-bottom: 0; }
+.offer-steps li:last-child { padding-bottom: 0; }
 .offer-steps li::before {
-  content: counter(offer-step, upper-roman);
+  content: "";
   position: absolute;
+  top: 5px;
   left: 0;
-  top: 0;
-  font-family: var(--font-display);
-  color: var(--accent);
+  z-index: 1;
+  width: 13px;
+  height: 13px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  background: var(--grey);
+}
+.offer-steps li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 18px;
+  bottom: -5px;
+  left: 6px;
+  width: 1px;
+  background: var(--line-strong);
 }
 /* auto trycker knappen till kortets botten, i linje med listans slut */
 .offer-card .btn { margin-top: auto; }
@@ -547,22 +556,46 @@ button { font: inherit; cursor: pointer; }
   grid-template-columns: repeat(4, 1fr);
   gap: 34px;
 }
+/* En sammanhängande linje genom stegen: varje steg ritar sin bit och
+   sträcker den över mellanrummet till nästa. Det sista slutar i en pil. */
 .process-step {
   position: relative;
-  padding-top: 26px;
+  padding-top: 40px;
+}
+.process-step::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 0;
+  right: -34px;
+  height: 1px;
+  background: var(--line-strong);
+}
+.process-step:last-child::before { right: 0; }
+.process-step:last-child::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: 1px;
+  width: 9px;
+  height: 9px;
   border-top: 1px solid var(--line-strong);
-  transition: border-color .25s ease;
+  border-right: 1px solid var(--line-strong);
+  transform: rotate(45deg);
 }
-.process-step:hover { border-top-color: var(--accent); }
-.process-num {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 1.45rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  color: var(--ink);
-  margin-bottom: 14px;
+.process-mark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 13px;
+  height: 13px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  background: var(--white);
+  transition: background .25s ease;
 }
+.process-step:hover .process-mark { background: var(--accent); }
 .process-step h3 {
   font-size: 1.2rem;
   letter-spacing: 0;
@@ -881,7 +914,13 @@ button { font: inherit; cursor: pointer; }
   .offer-grid { grid-template-columns: 1fr; }
   .offer-card { margin-top: 0; }
   .value-card:nth-child(2) { border-right: none; }
-  .process-list { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  /* Linjen vänds lodrätt — två kolumner skulle bryta den mitt i */
+  .process-list { grid-template-columns: 1fr; gap: 0; max-width: 560px; }
+  .process-step { padding: 0 0 36px 40px; }
+  .process-step::before { top: 0; bottom: 0; left: 6px; right: auto; width: 1px; height: auto; }
+  .process-step:last-child { padding-bottom: 30px; }
+  .process-step:last-child::after { top: auto; bottom: 2px; right: auto; left: 2px; transform: rotate(135deg); }
+  .process-mark { top: 4px; }
   .kontakt-grid { grid-template-columns: 1fr; gap: 48px; }
 }
 
