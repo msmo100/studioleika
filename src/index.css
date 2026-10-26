@@ -1,18 +1,25 @@
 /* ============================================
    Studio Leika — stylesheet
-   Ljust, monokromt tema med en varm accent (bränd terrakotta)
+   Monokromt tema med en varm accent (bränd terrakotta), i ljust och mörkt.
+   Mörkt följer systemet, eller valet i headern (data-theme på <html>).
    ============================================ */
 
 :root {
   /* Palette — neutral gråskala, inget färgstick */
   --ink:          #101010;  /* Djupsvart  */
   --grey:         #EDEDED;  /* Ljusgrå    */
-  --white:        #FFFFFF;  /* Pure White */
+  --bg:           #FFFFFF;  /* Sidans botten */
+
+  /* Fasta färger som inte byter med temat — text på accent och i sidfoten */
+  --white:        #FFFFFF;
+  --black:        #101010;
 
   /* Accent — den enda kulören på sidan */
   --accent:       #B24A28;  /* Bränd terrakotta, 5.4:1 mot vit text */
   --accent-deep:  #8F3A1F;  /* Hover                                */
   --accent-tint:  rgba(178, 74, 40, 0.07);
+  --on-accent:    #FFFFFF;  /* Text på accentfärgad botten          */
+  --band:         #B24A28;  /* CTA-bandet behåller tonen i båda teman */
 
   /* Statusfärger — medvetet åtskilda från accenten i kulör */
   --ok:           #101010;  /* neutral, som brödtexten          */
@@ -25,6 +32,13 @@
 
   --line:         #DCDCDC;
   --line-strong:  rgba(16, 16, 16, 0.22);
+
+  /* Halvgenomskinliga ytor */
+  --header-bg:        rgba(255, 255, 255, 0.86);
+  --header-bg-solid:  rgba(255, 255, 255, 0.97);
+  --nav-panel:        rgba(255, 255, 255, 0.98);
+  --vignette:         rgba(255, 255, 255, 0.85);
+  --footer-bg:        #101010;
 
   /* Type */
   --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
@@ -39,6 +53,68 @@
   color-scheme: light;
 }
 
+/* Mörkt tema. Samma värden två gånger: en gång för den som valt mörkt i
+   headern, en gång för systemets inställning när inget val är gjort. */
+:root[data-theme="dark"] {
+  --ink:          #EDEDED;
+  --grey:         #1A1A1A;
+  --bg:           #121212;
+
+  /* Ljusare terrakotta — originalet når bara 3.2:1 mot mörk botten */
+  --accent:       #D9714C;  /* 5.6:1 mot --bg; knappar får mörk text */
+  --accent-deep:  #E58B6A;
+  --accent-tint:  rgba(217, 113, 76, 0.08);
+  --on-accent:    #121212;
+
+  --ok:           #EDEDED;
+  --error:        #F2808F;
+
+  --ink-soft:     #B8B8B8;
+  --ink-faint:    #9A9A9A;
+  --grey-deep:    #3A3A3A;
+
+  --line:         #2C2C2C;
+  --line-strong:  rgba(237, 237, 237, 0.22);
+
+  --header-bg:        rgba(18, 18, 18, 0.86);
+  --header-bg-solid:  rgba(18, 18, 18, 0.97);
+  --nav-panel:        rgba(18, 18, 18, 0.98);
+  --vignette:         rgba(255, 255, 255, 0.04);
+  --footer-bg:        #0A0A0A;
+
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink:          #EDEDED;
+    --grey:         #1A1A1A;
+    --bg:           #121212;
+
+    --accent:       #D9714C;
+    --accent-deep:  #E58B6A;
+    --accent-tint:  rgba(217, 113, 76, 0.08);
+    --on-accent:    #121212;
+
+    --ok:           #EDEDED;
+    --error:        #F2808F;
+
+    --ink-soft:     #B8B8B8;
+    --ink-faint:    #9A9A9A;
+    --grey-deep:    #3A3A3A;
+
+    --line:         #2C2C2C;
+    --line-strong:  rgba(237, 237, 237, 0.22);
+
+    --header-bg:        rgba(18, 18, 18, 0.86);
+    --header-bg-solid:  rgba(18, 18, 18, 0.97);
+    --nav-panel:        rgba(18, 18, 18, 0.98);
+    --vignette:         rgba(255, 255, 255, 0.04);
+    --footer-bg:        #0A0A0A;
+
+    color-scheme: dark;
+  }
+}
+
 * { box-sizing: border-box; }
 html {
   scroll-behavior: smooth;
@@ -51,7 +127,7 @@ body {
   font-family: var(--font-sans);
   font-size: 1rem;
   color: var(--ink);
-  background: var(--white);
+  background: var(--bg);
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
 }
@@ -71,7 +147,7 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 img { max-width: 100%; display: block; }
 button { font: inherit; cursor: pointer; }
 
-::selection { background: var(--accent); color: var(--white); }
+::selection { background: var(--accent); color: var(--on-accent); }
 
 :focus-visible {
   outline: 2px solid var(--accent);
@@ -98,7 +174,7 @@ button { font: inherit; cursor: pointer; }
   left: -999px;
   top: 0;
   background: var(--ink);
-  color: var(--white);
+  color: var(--bg);
   font-weight: 600;
   padding: 12px 18px;
   z-index: 200;
@@ -147,7 +223,7 @@ button { font: inherit; cursor: pointer; }
 }
 .btn-primary {
   background: var(--accent);
-  color: var(--white);
+  color: var(--on-accent);
   border-color: var(--accent);
 }
 .btn-primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
@@ -156,14 +232,14 @@ button { font: inherit; cursor: pointer; }
   color: var(--ink);
   border-color: var(--line-strong);
 }
-.btn-ghost:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.btn-ghost:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 /* På mörk botten (CTA-bandet) */
 .btn-light {
   background: transparent;
   color: var(--white);
   border-color: rgba(255, 255, 255, 0.5);
 }
-.btn-light:hover { background: var(--white); color: var(--ink); border-color: var(--white); }
+.btn-light:hover { background: var(--white); color: var(--black); border-color: var(--white); }
 .btn-sm { padding: 10px 20px; font-size: 0.74rem; }
 .btn:disabled { opacity: 0.55; cursor: not-allowed; }
 .btn-block { width: 100%; }
@@ -173,13 +249,13 @@ button { font: inherit; cursor: pointer; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.86);
+  background: var(--header-bg);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid transparent;
   transition: border-color .25s ease, background .25s ease;
 }
 .site-header.scrolled {
-  background: rgba(255, 255, 255, 0.97);
+  background: var(--header-bg-solid);
   border-bottom-color: var(--line);
 }
 .header-inner {
@@ -268,6 +344,31 @@ button { font: inherit; cursor: pointer; }
 .nav-toggle.open span:nth-child(2) { opacity: 0; }
 .nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
+/* Ljust/mörkt läge. Båda ikonerna renderas och CSS visar den som gäller —
+   servern vet inte besökarens tema, så markupen måste vara densamma. */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--ink-soft);
+  transition: color .2s ease, border-color .2s ease;
+}
+.theme-toggle:hover { color: var(--accent); border-color: var(--line-strong); }
+.theme-toggle .icon { color: inherit; }
+/* Två klasser, annars vinner .icon { display: block } längre ner i filen */
+.theme-toggle .theme-icon-sun { display: none; }
+:root[data-theme="dark"] .theme-icon-sun { display: block; }
+:root[data-theme="dark"] .theme-icon-moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-icon-sun { display: block; }
+  :root:not([data-theme="light"]) .theme-icon-moon { display: none; }
+}
+
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
@@ -281,7 +382,7 @@ button { font: inherit; cursor: pointer; }
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(70% 60% at 50% 10%, rgba(255, 255, 255, 0.85), transparent 70%);
+  background: radial-gradient(70% 60% at 50% 10%, var(--vignette), transparent 70%);
 }
 
 .hero-inner {
@@ -592,7 +693,7 @@ button { font: inherit; cursor: pointer; }
   height: 13px;
   border: 1px solid var(--accent);
   border-radius: 50%;
-  background: var(--white);
+  background: var(--bg);
   transition: background .25s ease;
 }
 .process-step:hover .process-mark { background: var(--accent); }
@@ -657,7 +758,7 @@ button { font: inherit; cursor: pointer; }
 /* CTA band */
 .cta-band {
   position: relative;
-  background: var(--accent);
+  background: var(--band);
   color: var(--white);
 }
 .cta-band-inner {
@@ -833,7 +934,7 @@ button { font: inherit; cursor: pointer; }
 
 /* ---------- Footer ---------- */
 .site-footer {
-  background: var(--ink);
+  background: var(--footer-bg);
   color: var(--white);
   padding: 52px 0;
 }
@@ -930,7 +1031,7 @@ button { font: inherit; cursor: pointer; }
     position: fixed;
     top: 70px;
     left: 0; right: 0;
-    background: rgba(255, 255, 255, 0.98);
+    background: var(--nav-panel);
     border-bottom: 1px solid var(--line);
     flex-direction: column;
     align-items: flex-start;
@@ -951,6 +1052,7 @@ button { font: inherit; cursor: pointer; }
   .nav-cta { display: inline-flex; margin-top: 16px; }
   .nav-toggle { display: flex; }
   .header-actions .btn-sm { display: none; }
+  .header-actions { gap: 4px; }
   .value-cards, .service-grid, .offer-items, .process-list { grid-template-columns: 1fr; }
   .offer-list, .offer-card { padding: 42px 24px 36px; }
   /* Bara värdekorten. Deras behållare har ram runt om och kan ta över
